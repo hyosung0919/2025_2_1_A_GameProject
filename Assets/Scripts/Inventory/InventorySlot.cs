@@ -11,9 +11,20 @@ public class InventorySlot : MonoBehaviour
     public Image itemIcon;                              //아이템 아이콘 이미지
     public Text amountText;                             //개수 텍스트
     public GameObject emptySlotImage;                   //빈 슬롯일 때 보여줄 이미지
+
+    public Button slotButton;
     void Start()
     {
         UpdateSlotUI();
+        slotButton.onClick.AddListener(OnSlotClick);    
+    }
+
+    void OnSlotClick()
+    {
+        if(item != null)
+        {
+            ItemUsePopup.Instance.ShowPopup(item, this);
+        }
     }
 
     //슬롯에 아이템 설정하는 함수
@@ -58,7 +69,7 @@ public class InventorySlot : MonoBehaviour
     {
         if(item != null)                            //아이템이 있으면
         {
-            itemIcon.sprite = item.ItemIcon;        //아이콘 표시
+            itemIcon.sprite = item.itemIcon;        //아이콘 표시
             itemIcon.enabled = true;
 
             amountText.text = amount > 1 ? amount.ToString() : "";              //개수가 1개보다 많으면 숫자 표시
