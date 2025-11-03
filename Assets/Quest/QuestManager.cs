@@ -47,6 +47,8 @@ public class QuestManager : MonoBehaviour
 
     void Update()
     {
+        if (currentQuest == null)
+            return;
         CheckQuestProgress();
         UpdateQuestUI();
     }
