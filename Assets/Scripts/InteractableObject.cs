@@ -55,7 +55,7 @@ public class InteractableObject : MonoBehaviour
         switch (interactionType)
         {
             case InteractionType.Item:
-                eColletItem();
+                ColletItem();
                 break;
             case InteractionType.Machine:
                 OperateMachine();
