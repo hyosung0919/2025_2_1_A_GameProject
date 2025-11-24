@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isUIMode = false;                          //UI ¸ðµå ¼³Á¤
 
+    public GameObject effectPos;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -85,6 +87,7 @@ public class PlayerController : MonoBehaviour
                 isLanding = true;
                 landingTimer = landingDuration;
                 Debug.Log("ÂøÁö");
+                EffectManager.instance.PlayeEffect("ÂøÁöÀÌÆåÆ®" , transform.position);
             }
         }
     }
@@ -119,6 +122,7 @@ public class PlayerController : MonoBehaviour
             if(animator != null)
             {
                 animator.SetTrigger("attackTrigger");
+                EffectManager.instance.PlayeEffectWithDelay("°ø°ÝÀÌÆåÆ®", effectPos.transform.position, Quaternion.identity, 0.5f, 1.0f);
             }
         }
     }
